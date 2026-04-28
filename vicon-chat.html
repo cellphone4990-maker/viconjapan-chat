@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vicon ROM-GEO サポート</title>
+
+  <script defer
+    src="https://www.gstatic.com/ces-console/fast/chat-messenger/prod/v1.15/chat-messenger.js">
+  </script>
+  <link rel="stylesheet" href="https://www.gstatic.com/ces-console/fast/chat-messenger/prod/v1.15/themes/chat-messenger-default.css">
+  <link rel="stylesheet" href="https://www.gstatic.com/ces-console/fast/chat-messenger/prod/v1.15/themes/chat-messenger-layout.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #f0f4f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #1a73e8;
+      color: white;
+      padding: 16px 24px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+    header h1 { font-size: 20px; font-weight: 600; }
+    header p { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+    .main {
+      margin-top: 80px;
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 600px;
+    }
+    .main h2 { font-size: 22px; color: #333; margin-bottom: 12px; }
+    .main p { font-size: 15px; color: #666; line-height: 1.7; }
+    .hint {
+      margin-top: 24px;
+      background: #e8f0fe;
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: #1a73e8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🤖 Vicon ROM-GEO サポート</h1>
+    <p>製品に関するご質問にAIがお答えします</p>
+  </header>
+
+  <div class="main">
+    <h2>ご質問はチャットからどうぞ</h2>
+    <p>画面右下のチャットアイコンをクリックすると、AIサポートが起動します。<br>製品の操作方法や設定についてお気軽にお尋ねください。</p>
+    <div class="hint">
+      💡 右下のチャットボタンをタップしてスタート！
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("chat-messenger-loaded", () => {
+      chatSdk.registerContext(
+        chatSdk.prebuilts.ces.createContext({
+          deploymentName: "projects/122812475704/locations/us/apps/1967fb1b-6399-43c5-912a-07436026abfc/deployments/eab98098-43e2-4c85-87a6-3ce55a6f4c9e",
+          tokenBroker: {
+            enableTokenBroker: true,
+            enableRecaptcha: false
+          }
+        }),
+      );
+    });
+  </script>
+
+  <chat-messenger url-allowlist="*">
+    <chat-messenger-container
+      chat-title="ROM-GEO Support"
+      chat-title-icon="https://gstatic.com/dialogflow-console/common/assets/ccai-favicons/conversational_agents.png"
+      enable-file-upload
+      enable-audio-input
+    >
+      <chat-reset-session-button
+        slot="titlebar-actions"
+        title-text="Start new chat"
+      ></chat-reset-session-button>
+      <chat-toggle-dialog-button
+        slot="titlebar-actions"
+        title-text-expanded="Collapse"
+        title-text-collapsed="Expand"
+      ></chat-toggle-dialog-button>
+      <chat-messenger-close-button
+        slot="titlebar-actions"
+        title-text="Close"
+      ></chat-messenger-close-button>
+    </chat-messenger-container>
+  </chat-messenger>
+
+</body>
+</html>
